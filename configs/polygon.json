@@ -1,0 +1,11 @@
+{
+  "output": "generated/",
+  "chain": "matic",
+  "datasources": [
+    {
+      "address": "0x4D0Def42Cf57D6f27CD4983042a55dce1C9F853c",
+      "startBlock": 12353596,
+      "module": "erc20"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+specVersion: 0.0.4
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: erc20
+    network: matic
+    source:
+      address: "0x4D0Def42Cf57D6f27CD4983042a55dce1C9F853c"
+      abi: IERC20
+      startBlock: 12353596
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - ERC20Contract
+      abis:
+        - name: IERC20
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/IERC20Metadata.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/erc20.ts

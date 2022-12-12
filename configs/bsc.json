@@ -1,0 +1,11 @@
+{
+  "output": "generated/",
+  "chain": "bsc",
+  "datasources": [
+    {
+      "address": "0x314593fa9a2fa16432913dBcCC96104541d32D11",
+      "startBlock": 5931192,
+      "module": "erc20"
+    }
+  ]
+}

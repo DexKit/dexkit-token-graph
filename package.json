@@ -1,0 +1,37 @@
+{
+  "name": "dexkit-token-graph",
+  "version": "1.0.0",
+  "description": "Subgraphs for DexKit token",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate:mainnet": "npx graph-compiler --config configs/mainnet.json --include node_modules/@openzeppelin/subgraphs/src/datasources --export-schema --export-subgraph",
+    "generate:bsc": "npx graph-compiler --config configs/bsc.json --include node_modules/@openzeppelin/subgraphs/src/datasources --export-schema --export-subgraph",
+    "generate:polygon": "npx graph-compiler --config configs/polygon.json --include node_modules/@openzeppelin/subgraphs/src/datasources --export-schema --export-subgraph",
+    "codegen": "npx graph-cli codegen generated/subgraph.yaml",
+    "build": "npx graph-cli build generated/subgraph.yaml",
+    "deploy:mainnet": "npm run generate:mainnet && npm run codegen && npm run build && npx graph deploy --node https://api.thegraph.com/deploy/ joaocampos89/dexkit-token-mainnet generated/subgraph.yaml",
+    "deploy:bsc": "npm run generate:bsc && npm run codegen && npm run build && npx graph deploy --node https://api.thegraph.com/deploy/ joaocampos89/dexkit-token-bsc generated/subgraph.yaml",
+    "deploy:polygon": "npm run generate:polygon && npm run codegen && npm run build && npx graph deploy --node https://api.thegraph.com/deploy/ joaocampos89/dexkit-token-polygon generated/subgraph.yaml"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DexKit/dexkit-token-graph.git"
+  },
+  "keywords": [
+    "graph",
+    "kit",
+    "token"
+  ],
+  "author": "JoaoCampos89",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DexKit/dexkit-token-graph/issues"
+  },
+  "homepage": "https://github.com/DexKit/dexkit-token-graph#readme",
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.37.1",
+    "@graphprotocol/graph-ts": "^0.29.0",
+    "@openzeppelin/subgraphs": "^0.1.8-5"
+  }
+}
